@@ -30,6 +30,24 @@ public:
     std::string getCodigoEmpleado() const { return codigoEmpleado; }        //se obtiene el codigo del empleado y su salario
     double getSalario() const { return salario; }
 
+     // Setters
+    void setCodigoEmpleado(std::string nuevoCodigo) {
+        bool soloNumeros = true;
+        for (char c : nuevoCodigo) {
+            if (!isdigit(c)) {
+                soloNumeros = false;
+                break;
+            }
+        }
+        if (soloNumeros && !nuevoCodigo.empty()) {
+            codigoEmpleado = nuevoCodigo;
+        } else {
+            std::cout << "Error: El código debe contener solo números\n";
+        }
+    }
+    void setSalario(double nuevoSalario) {
+        salario = (nuevoSalario > 0) ? nuevoSalario : salario;
+    }
 };
 
 #endif
