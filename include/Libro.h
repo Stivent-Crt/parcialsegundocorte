@@ -29,7 +29,7 @@ class Libro{
          * @param codigoLibro 
          * @param disponible 
          */
-        Libro(std::string titulo, std::string autor, int codigoLibro, bool disponible);
+        Libro(std::string titulo, std::string autor, int codigoLibro);
 
 
         
