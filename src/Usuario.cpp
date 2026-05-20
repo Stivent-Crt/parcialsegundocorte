@@ -23,3 +23,14 @@ Usuario::Usuario(std::string nombre, std::string documento, int edad, std::strin
     this->cantidadLibrosPrestados = 0;
 
 }
+
+void Usuario::mostrarRol() {
+    std::cout << "Rol: Usuario de Biblioteca" << std::endl;
+}
+
+void Usuario::mostrarInformacion() {
+    Persona::mostrarInformacion();
+    std::cout << "Código de Usuario: " << codigoUsuario << std::endl;
+    std::cout << "Libros prestados: " << cantidadLibrosPrestados << std::endl;
+    mostrarRol();
+}

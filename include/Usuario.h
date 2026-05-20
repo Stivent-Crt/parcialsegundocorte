@@ -11,6 +11,9 @@ private:
 public:
     Usuario(std::string nombre, std::string documento, int edad, std::string codigoUsuario);
 
+    void mostrarRol() override;
+    void mostrarInformacion() override;
+
     // Setters
     void setCodigoUsuario(std::string nuevoCodigo) {
         bool soloNumeros = true;
