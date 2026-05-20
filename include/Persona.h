@@ -38,6 +38,17 @@ public:
     std::string getNombre() const { return nombre; }            //getters para obtener el nombre, el documento y la edad de la persona
     std::string getDocumento() const { return documento; }
     int getEdad() const { return edad; }
+
+    // Setters
+    void setNombre(std::string nuevoNombre) { nombre = nuevoNombre; }
+    void setDocumento(std::string nuevoDocumento) { documento = nuevoDocumento; }
+    void setEdad(int nuevaEdad) { 
+        if (nuevaEdad > 0) {
+            edad = nuevaEdad;
+        } else {
+            std::cout << "Error: La edad debe ser mayor a 0\n";
+        }
+    }
 };
 
 #endif
