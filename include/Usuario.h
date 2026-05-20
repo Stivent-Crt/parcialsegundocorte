@@ -14,6 +14,10 @@ public:
     void mostrarRol() override;
     void mostrarInformacion() override;
 
+    // Getters (estos son los que faltaban)
+    std::string getCodigoUsuario() const { return codigoUsuario; }
+    int getCantidadLibrosPrestados() const { return cantidadLibrosPrestados; }
+
     // Setters
     void setCodigoUsuario(std::string nuevoCodigo) {
         bool soloNumeros = true;
