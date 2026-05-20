@@ -95,3 +95,38 @@ void Biblioteca::prestarLibro() {
     else if (!l) cout << "Error: Libro no existe\n";
     else if (l->prestarLibro()) u->incrementarLibrosPrestados();
 }
+
+void Biblioteca::devolverLibro() {
+    string codLibro;
+    
+    cout << "\n--- Devolver Libro ---\n";
+    cout << "Codigo libro: "; cin >> codLibro;
+    
+    Libro* l = buscarLibro(codLibro);
+    if (!l) cout << "Error: Libro no existe\n";
+    else {
+        l->devolverLibro();
+        for (auto& u : usuarios) {
+            if (u->getCantidadLibrosPrestados() > 0) {
+                u->decrementarLibrosPrestados();
+                break;
+            }
+        }
+    }
+}
+
+void Biblioteca::mostrarUsuarios() {
+    cout << "\n=== USUARIOS ===\n";
+    if (usuarios.empty()) cout << "No hay usuarios\n";
+    else for (auto& u : usuarios) u->mostrarInformacion();
+    
+    cout << "\n=== BIBLIOTECARIOS ===\n";
+    if (bibliotecarios.empty()) cout << "No hay bibliotecarios\n";
+    else for (auto& b : bibliotecarios) b->mostrarInformacion();
+}
+
+void Biblioteca::mostrarLibros() {
+    cout << "\n=== LIBROS ===\n";
+    if (libros.empty()) cout << "No hay libros\n";
+    else for (auto& l : libros) l->mostrarInformacion();
+}
