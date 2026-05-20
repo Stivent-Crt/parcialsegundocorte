@@ -46,3 +46,52 @@ void Biblioteca::registrarUsuario() {
         cout << "Usuario registrado!\n";
     }
 }
+
+void Biblioteca::registrarBibliotecario() {
+    string nombre, documento, codigo;
+    int edad; double salario;
+    
+    cout << "\n--- Registrar Bibliotecario ---\n";
+    cout << "Nombre: "; cin >> ws; getline(cin, nombre);
+    cout << "Documento: "; cin >> documento;
+    cout << "Edad: "; cin >> edad;
+    cout << "Codigo: "; cin >> codigo;
+    cout << "Salario: "; cin >> salario;
+    
+    if (edad <= 0) cout << "Error: Edad debe ser > 0\n";
+    else if (!soloNumeros(codigo)) cout << "Error: Codigo solo numeros\n";
+    else {
+        bibliotecarios.push_back(new Bibliotecario(nombre, documento, edad, codigo, salario));
+        cout << "Bibliotecario registrado!\n";
+    }
+}
+
+void Biblioteca::registrarLibro() {
+    string titulo, autor, codigo;
+    
+    cout << "\n--- Registrar Libro ---\n";
+    cout << "Titulo: "; cin >> ws; getline(cin, titulo);
+    cout << "Autor: "; cin >> ws; getline(cin, autor);
+    cout << "Codigo: "; cin >> codigo;
+    
+    if (!soloNumeros(codigo)) cout << "Error: Codigo solo numeros\n";
+    else {
+        libros.push_back(new Libro(titulo, autor, codigo));
+        cout << "Libro registrado!\n";
+    }
+}
+
+void Biblioteca::prestarLibro() {
+    string codUsuario, codLibro;
+    
+    cout << "\n--- Prestar Libro ---\n";
+    cout << "Codigo usuario: "; cin >> codUsuario;
+    cout << "Codigo libro: "; cin >> codLibro;
+    
+    Usuario* u = buscarUsuario(codUsuario);
+    Libro* l = buscarLibro(codLibro);
+    
+    if (!u) cout << "Error: Usuario no existe\n";
+    else if (!l) cout << "Error: Libro no existe\n";
+    else if (l->prestarLibro()) u->incrementarLibrosPrestados();
+}
