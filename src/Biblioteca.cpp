@@ -1,6 +1,7 @@
 #include "Biblioteca.h"
 #include <iostream>
 #include <cctype>
+#include <string>
 using namespace std;
 
 Biblioteca::Biblioteca() {}
@@ -18,8 +19,9 @@ bool Biblioteca::soloNumeros(string str) {
 }
 
 Usuario* Biblioteca::buscarUsuario(string codigo) {
-    for (auto& u : usuarios) 
+    for (auto& u : usuarios) {
         if (u->getCodigoUsuario() == codigo) return u;
+    }
     return nullptr;
 }
 
